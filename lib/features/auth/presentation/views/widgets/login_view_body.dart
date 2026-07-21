@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruitify/constants.dart';
 import 'package:fruitify/core/assets.dart';
+import 'package:fruitify/core/helper/extensions.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/core/widgets/custom_bottom.dart';
@@ -30,14 +31,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizintalPadding),
+      padding: EdgeInsets.symmetric(
+        horizontal: kHorizintalPadding.w,
+      ),
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
           autovalidateMode: autovalidateMode,
           child: Column(
             children: [
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
+
               CustomTextFormField(
                 onSaved: (value) {
                   email = value!;
@@ -46,7 +50,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 textInputType: TextInputType.emailAddress,
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               PasswordField(
                 onSaved: (value) {
@@ -54,7 +58,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 },
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -68,14 +72,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ],
               ),
 
-              const SizedBox(height: 33),
+              SizedBox(height: 33.h),
 
               CustomBottom(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
 
-                    context.read<LogInCubit>().logInWithEmail(email, password);
+                    context.read<LogInCubit>().logInWithEmail(
+                          email,
+                          password,
+                        );
                   } else {
                     setState(() {
                       autovalidateMode = AutovalidateMode.always;
@@ -85,21 +92,24 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 text: 'تسجيل دخول',
               ),
 
-              const SizedBox(height: 33),
+              SizedBox(height: 33.h),
 
               DontHaveAccount(
                 ontap: () {
-                  Navigator.pushNamed(context, SignUpView.routeName);
+                  Navigator.pushNamed(
+                    context,
+                    SignUpView.routeName,
+                  );
                 },
                 text1: 'لا تمتلك حساب؟',
                 text2: 'قم بإنشاء حساب',
               ),
 
-              const SizedBox(height: 33),
+              SizedBox(height: 33.h),
 
               const OrDivider(),
 
-              const SizedBox(height: 33),
+              SizedBox(height: 33.h),
 
               SocialLoginButton(
                 onPressed: () {
@@ -109,9 +119,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 title: 'تسجيل بواسطة جوجل',
               ),
 
-              const SizedBox(height: 16),
-
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               SocialLoginButton(
                 onPressed: () {

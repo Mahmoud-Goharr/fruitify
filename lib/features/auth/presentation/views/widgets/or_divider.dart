@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruitify/core/helper/extensions.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 
 class OrDivider extends StatelessWidget {
@@ -6,25 +7,25 @@ class OrDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        Expanded(
+        const Expanded(
           child: Divider(
             color: Color(0xFFDCDEDE),
           ),
         ),
         SizedBox(
-          width: 18,
+          width: 18.w,
         ),
-        Text(
+        const Text(
           'أو',
           textAlign: TextAlign.center,
           style: TextStyles.semiBold16,
         ),
         SizedBox(
-          width: 18,
+          width: 18.w,
         ),
-        Expanded(
+        const Expanded(
           child: Divider(
             color: Color(0xFFDCDEDE),
           ),

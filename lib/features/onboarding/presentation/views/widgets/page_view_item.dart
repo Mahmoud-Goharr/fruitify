@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitify/constants.dart';
+import 'package:fruitify/core/helper/extensions.dart';
 import 'package:fruitify/core/services/shared_preferences_singleton.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 
@@ -18,7 +19,7 @@ class PageViewItem extends StatelessWidget {
   final String description;
   final String image;
   final String backgroundimg;
-  final bool isVisible; // Add a property to indicate if it's the last page
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -31,25 +32,31 @@ class PageViewItem extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned.fill(
-                  child: SvgPicture.asset(backgroundimg, fit: BoxFit.fill),
+                  child: SvgPicture.asset(
+                    backgroundimg,
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 Positioned(
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  child: Center(child: SvgPicture.asset(image)),
+                  child: Center(
+                    child: SvgPicture.asset(image),
+                  ),
                 ),
                 Visibility(
-                  visible:
-                      isVisible, // Adjust the condition based on your needs
+                  visible: isVisible,
                   child: GestureDetector(
                     onTap: () {
                       prehs.setbool(kIsOnBoardingViewSeen, true);
-                      // Navigate to the login view when the button is pressed
-                      Navigator.of(context).pushReplacementNamed('loginView');
+
+                      Navigator.of(
+                        context,
+                      ).pushReplacementNamed('loginView');
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(25.0),
+                      padding: EdgeInsets.all(25.r),
                       child: Text(
                         'تخط',
                         style: TextStyles.regular16.copyWith(
@@ -63,11 +70,16 @@ class PageViewItem extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 64),
+          SizedBox(height: 64.h),
+
           title,
-          SizedBox(height: 24),
+
+          SizedBox(height: 24.h),
+
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 37),
+            padding: EdgeInsets.symmetric(
+              horizontal: 37.w,
+            ),
             child: Text(
               description,
               style: TextStyles.semiBold13.copyWith(

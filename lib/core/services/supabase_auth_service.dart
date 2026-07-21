@@ -156,6 +156,7 @@ class SupabaseAuthService {
         const Duration(minutes: 2),
         onTimeout: () {
           subscription.cancel();
+          
 
           throw const CustomException(
             message: 'انتهت مهلة تسجيل الدخول بواسطة Facebook.',

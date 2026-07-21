@@ -8,7 +8,6 @@ import 'package:fruitify/features/auth/presentation/views/login_view.dart';
 import 'package:fruitify/features/home/presentation/views/home_view.dart';
 import 'package:fruitify/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:get_it/get_it.dart';
-
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 

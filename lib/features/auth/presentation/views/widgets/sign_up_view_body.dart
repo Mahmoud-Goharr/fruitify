@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruitify/constants.dart';
+import 'package:fruitify/core/helper/extensions.dart';
 import 'package:fruitify/core/widgets/custom_bottom.dart';
 import 'package:fruitify/core/widgets/custom_text_form_field.dart';
 import 'package:fruitify/core/widgets/password_field.dart';
@@ -19,22 +20,25 @@ class SignUpViewBody extends StatefulWidget {
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   late String email;
   late String password;
   late String name;
   late bool isTermsAccepted = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizintalPadding),
-
+      padding: EdgeInsets.symmetric(
+        horizontal: kHorizintalPadding.w,
+      ),
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
           autovalidateMode: autovalidateMode,
           child: Column(
             children: [
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
 
               CustomTextFormField(
                 onSaved: (value) {
@@ -44,7 +48,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 textInputType: TextInputType.name,
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               CustomTextFormField(
                 onSaved: (value) {
@@ -54,7 +58,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 textInputType: TextInputType.emailAddress,
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               PasswordField(
                 onSaved: (value) {
@@ -62,7 +66,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 },
               ),
 
-              SizedBox(height: 30),
+              SizedBox(height: 30.h),
 
               TermsAndConditionsWidget(
                 onChanged: (value) {
@@ -70,27 +74,28 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 },
               ),
 
-              const SizedBox(height: 30),
+              SizedBox(height: 30.h),
 
               CustomBottom(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
+
                     if (isTermsAccepted) {
                       context.read<SignUpCubit>().signUpWithEmail(
-                        email,
-                        password,
-                        name,
-                      );
+                            email,
+                            password,
+                            name,
+                          );
                     } else {
-                      if (!isTermsAccepted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('يجب الموافقة على الشروط والأحكام'),
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'يجب الموافقة على الشروط والأحكام',
                           ),
-                        );
-                        return;
-                      }
+                        ),
+                      );
+                      return;
                     }
                   } else {
                     setState(() {
@@ -101,11 +106,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 text: ' إنشاء حساب جديد',
               ),
 
-              const SizedBox(height: 26),
+              SizedBox(height: 26.h),
 
               DontHaveAccount(
                 ontap: () {
-                  Navigator.pop(context, LoginView.routeName);
+                  Navigator.pop(
+                    context,
+                    LoginView.routeName,
+                  );
                 },
                 text1: 'تمتلك حساب بالفعل ؟',
                 text2: ' تسجيل الدخول',

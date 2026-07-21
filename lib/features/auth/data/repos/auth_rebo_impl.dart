@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:fruitify/core/errors/exeption.dart';
 import 'package:fruitify/core/errors/failure.dart';
 import 'package:fruitify/core/services/database_service.dart';
+import 'package:fruitify/core/services/shared_preferences_singleton.dart';
 import 'package:fruitify/core/services/supabase_auth_service.dart';
 import 'package:fruitify/features/auth/data/models/user_model.dart';
 import 'package:fruitify/features/auth/doamin/entities/user_entity.dart';
@@ -29,11 +30,24 @@ class AuthRepositoryImpl extends AuthRepo {
     }
   }
 
+  Future<UserModel> _getOrCreateUser(user) async {
+    final authUser = UserModel.fromSupabaseUser(user);
+
+    await _saveUserIfNotExists(authUser);
+
+    final userData = await databaseService.getDataById(
+      path: 'users',
+      id: authUser.id,
+    );
+
+    // The database record is the source of truth for profile fields.
+    return userData == null ? authUser : UserModel.fromMap(userData);
+  }
+
   Future<UserEntity> _handleOAuthUser(user) async {
-    final userModel = UserModel.fromSupabaseUser(user);
+    final userModel = await _getOrCreateUser(user);
 
-    await _saveUserIfNotExists(userModel);
-
+    await saveUserData(userModel);
     return userModel;
   }
 
@@ -55,9 +69,8 @@ class AuthRepositoryImpl extends AuthRepo {
         name: name,
       );
 
-      final userModel = UserModel.fromSupabaseUser(user);
-
-      await _saveUserIfNotExists(userModel);
+      final userModel = await _getOrCreateUser(user);
+      await saveUserData(userModel);
 
       return Right(userModel);
     } on CustomException catch (e) {
@@ -74,6 +87,10 @@ class AuthRepositoryImpl extends AuthRepo {
     return supabaseAuthService.currentUser != null;
   }
 
+  Future<void> saveUserData(UserModel user) async {
+    await prehs.saveUserData(user);
+  }
+
   @override
   Future<Either<Failure, UserEntity>> logInWithEmail({
     required String email,
@@ -85,7 +102,10 @@ class AuthRepositoryImpl extends AuthRepo {
         password: password,
       );
 
-      return Right(UserModel.fromSupabaseUser(user));
+      final userModel = await _getOrCreateUser(user);
+      await saveUserData(userModel);
+
+      return Right(userModel);
     } on CustomException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {

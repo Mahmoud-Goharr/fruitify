@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fruitify/constants.dart';
+import 'package:fruitify/core/helper/extensions.dart';
 import 'package:fruitify/core/services/shared_preferences_singleton.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
 import 'package:fruitify/core/widgets/custom_bottom.dart';
@@ -21,12 +22,14 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   @override
   void initState() {
+    super.initState();
+
     pageController = PageController();
+
     pageController.addListener(() {
       currentPage = pageController.page!.round();
       setState(() {});
     });
-    super.initState();
   }
 
   @override
@@ -35,48 +38,55 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
     super.dispose();
   }
 
-  // Add a property to indicate if it's the last page
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(child: OnboardingPageView(pageController: pageController)),
+        Expanded(
+          child: OnboardingPageView(
+            pageController: pageController,
+          ),
+        ),
 
         DotsIndicator(
           dotsCount: 2,
-          position: 0,
+          position: currentPage.toDouble(),
           decorator: DotsDecorator(
             activeColor: AppColors.primaryColor,
             color: currentPage == 1
                 ? AppColors.primaryColor
                 : AppColors.primaryColor.withValues(alpha: 0.5),
-
             activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(5.r),
             ),
           ),
         ),
 
-        SizedBox(height: 29),
+        SizedBox(height: 29.h),
 
         Visibility(
-          visible: currentPage == 1 ? true : false,
+          visible: currentPage == 1,
           maintainAnimation: true,
           maintainState: true,
           maintainSize: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kHorizintalPadding),
+            padding: EdgeInsets.symmetric(
+              horizontal: kHorizintalPadding.w,
+            ),
             child: CustomBottom(
               onPressed: () {
                 prehs.setbool(kIsOnBoardingViewSeen, true);
-                Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+
+                Navigator.of(
+                  context,
+                ).pushReplacementNamed(LoginView.routeName);
               },
               text: 'ابدا الان',
             ),
           ),
         ),
 
-        SizedBox(height: 43),
+        SizedBox(height: 43.h),
       ],
     );
   }

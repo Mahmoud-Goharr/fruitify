@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fruitify/core/helper/extensions.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/features/auth/presentation/views/widgets/custom_check_box.dart';
@@ -8,6 +8,7 @@ class TermsAndConditionsWidget extends StatefulWidget {
   const TermsAndConditionsWidget({super.key, required this.onChanged});
 
   final ValueChanged<bool> onChanged;
+
   @override
   State<TermsAndConditionsWidget> createState() =>
       _TermsAndConditionsWidgetState();
@@ -15,6 +16,7 @@ class TermsAndConditionsWidget extends StatefulWidget {
 
 class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
   bool isTermsAccepted = false;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,7 +29,9 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
           },
           isChecked: isTermsAccepted,
         ),
-        const SizedBox(width: 16),
+
+        SizedBox(width: 16.w),
+
         Expanded(
           child: Text.rich(
             TextSpan(
