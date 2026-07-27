@@ -41,7 +41,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           child: Column(
             children: [
               SizedBox(height: 24.h),
-
               CustomTextFormField(
                 onSaved: (value) {
                   email = value!;
@@ -49,17 +48,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 hintText: 'البريد الإلكتروني',
                 textInputType: TextInputType.emailAddress,
               ),
-
               SizedBox(height: 16.h),
-
               PasswordField(
                 onSaved: (value) {
                   password = value!;
                 },
               ),
-
               SizedBox(height: 16.h),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -71,9 +66,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   ),
                 ],
               ),
-
               SizedBox(height: 33.h),
-
               CustomBottom(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
@@ -91,9 +84,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 },
                 text: 'تسجيل دخول',
               ),
-
               SizedBox(height: 33.h),
-
               DontHaveAccount(
                 ontap: () {
                   Navigator.pushNamed(
@@ -104,13 +95,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 text1: 'لا تمتلك حساب؟',
                 text2: 'قم بإنشاء حساب',
               ),
-
               SizedBox(height: 33.h),
-
               const OrDivider(),
-
               SizedBox(height: 33.h),
-
               SocialLoginButton(
                 onPressed: () {
                   context.read<LogInCubit>().logInWithGoogle();
@@ -118,9 +105,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 image: Assets.assetsImagesGoogleIcon,
                 title: 'تسجيل بواسطة جوجل',
               ),
-
               SizedBox(height: 16.h),
-
               SocialLoginButton(
                 onPressed: () {
                   context.read<LogInCubit>().logInWithFacebook();

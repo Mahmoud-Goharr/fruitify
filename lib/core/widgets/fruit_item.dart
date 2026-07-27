@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fruitify/core/assets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruitify/core/entities/product_entity.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
+import 'package:fruitify/core/widgets/custom_network_image.dart';
+import 'package:fruitify/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
-
+  const FruitItem({super.key, required this.productEntity});
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,11 +32,14 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Image.asset(Assets.assetsImagesWatermelonTest),
+
+                Flexible(
+                  child: CustomNetworkImage(imageUrl: productEntity.imageUrl),
+                ),
                 const SizedBox(height: 24),
                 ListTile(
                   title: Text(
-                    'بطيخ',
+                    productEntity.name,
                     textAlign: TextAlign.right,
                     style: TextStyles.semiBold16,
                   ),
@@ -41,7 +47,7 @@ class FruitItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '10 جنية ',
+                          text: '${productEntity.price}جنيه ',
                           style: TextStyles.bold13.copyWith(
                             color: AppColors.secondaryColor,
                           ),
@@ -69,7 +75,9 @@ class FruitItem extends StatelessWidget {
                     textAlign: TextAlign.right,
                   ),
                   trailing: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      context.read<CartCubit>().addProduct(productEntity);
+                    },
                     child: const CircleAvatar(
                       backgroundColor: AppColors.primaryColor,
                       child: Icon(Icons.add, color: Colors.white),

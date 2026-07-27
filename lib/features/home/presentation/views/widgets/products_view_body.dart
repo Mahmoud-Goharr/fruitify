@@ -1,24 +1,26 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruitify/core/cubits/products_cubit/products_cubit.dart';
+import 'package:fruitify/core/widgets/build_app_bar.dart';
+import 'package:fruitify/core/widgets/custom_appbar.dart';
 import 'package:fruitify/core/widgets/search_text_field.dart';
 import 'package:fruitify/features/home/presentation/views/widgets/Custom_home_app_bar.dart';
-import 'package:fruitify/features/home/presentation/views/widgets/best_selling_header.dart';
-import 'package:fruitify/features/home/presentation/views/widgets/featured_list.dart';
 import 'package:fruitify/features/home/presentation/views/widgets/products_grid_view_bloc_builder.dart';
+import 'package:fruitify/features/home/presentation/views/widgets/featured_list.dart';
+import 'package:fruitify/features/home/presentation/views/widgets/products_view_header.dart';
 
-class HomeViewBody extends StatefulWidget {
-  const HomeViewBody({super.key});
+class ProductsViewBody extends StatefulWidget {
+  const ProductsViewBody({super.key});
 
   @override
-  State<HomeViewBody> createState() => _HomeViewBodyState();
+  State<ProductsViewBody> createState() => _ProductsViewBodyState();
 }
 
-class _HomeViewBodyState extends State<HomeViewBody> {
+class _ProductsViewBodyState extends State<ProductsViewBody> {
   @override
-  void initState() {
-    context.read<ProductsCubit>().getBestSellingProducts();
+  initState() {
     super.initState();
+    context.read<ProductsCubit>().getProducts();
   }
 
   @override
@@ -30,7 +32,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                CustomHomeAppBar(),
+                buildAppbar(context, title: 'المنتجات', showBackButton: false),
 
                 const SizedBox(height: 12),
 
@@ -38,11 +40,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
 
                 const SizedBox(height: 12),
 
-                const FeaturedList(),
-
-                const SizedBox(height: 8),
-
-                const BestSellingHeader(),
+                ProductsViewHeader(
+                  productsLength: context.read<ProductsCubit>().productsLength,
+                ),
 
                 const SizedBox(height: 8),
               ],

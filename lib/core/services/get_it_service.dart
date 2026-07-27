@@ -1,3 +1,5 @@
+import 'package:fruitify/core/repos/products_repo/products_repo.dart';
+import 'package:fruitify/core/repos/products_repo/products_repo_impl.dart';
 import 'package:fruitify/core/services/database_service.dart';
 import 'package:fruitify/core/services/supabase_auth_service.dart';
 import 'package:fruitify/core/services/supabase_database_service.dart';
@@ -22,5 +24,9 @@ void setupGetit() {
       supabaseAuthService: getIt<SupabaseAuthService>(),
       databaseService: getIt<DatabaseService>(),
     ),
+  );
+
+  getIt.registerSingleton<ProductsRepo>(
+    ProductsRepoImpl(getIt<DatabaseService>()),
   );
 }

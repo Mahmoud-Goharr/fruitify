@@ -1,28 +1,30 @@
-// import 'package:equatable/equatable.dart';
-// import 'package:fruits_hub/core/entities/product_entity.dart';
+import 'package:equatable/equatable.dart';
+import 'package:fruitify/core/entities/product_entity.dart';
 
-// class CartItemEntity extends Equatable {
-//   final ProductEntity productEntity;
-//   int quanitty;
+class CartItemEntity extends Equatable {
+  final ProductEntity productEntity;
+  int quanitty;
 
-//   CartItemEntity({required this.productEntity, this.quanitty = 0});
+  CartItemEntity({required this.productEntity, this.quanitty = 0});
 
-//   num calculateTotalPrice() {
-//     return productEntity.price * quanitty;
-//   }
+  num calculateTotalPrice() {
+    return productEntity.price * quanitty;
+  }
 
-//   num calculateTotalWeight() {
-//     return productEntity.unitAmount * quanitty;
-//   }
+  num calculateTotalWeight() {
+    return productEntity.unitAmount * quanitty;
+  }
 
-//   increasQuantity() {
-//     quanitty++;
-//   }
+  void increasQuantity() {
+    quanitty++;
+  }
 
-//   decreasQuantity() {
-//     quanitty--;
-//   }
+  void decreasQuantity() {
+    if (quanitty > 1) {
+      quanitty--;
+    }
+  }
 
-//   @override
-//   List<Object?> get props => [productEntity];
-// }
+  @override
+  List<Object?> get props => [productEntity];
+}

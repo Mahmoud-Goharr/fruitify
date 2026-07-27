@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fruitify/features/home/domain/entites/bottom_navigation_bar_entity.dart';
-import 'package:fruitify/features/home/presentation/views/widgets/naivation_bar_item.dart';
+
+import 'naivation_bar_item.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
-
+  const CustomBottomNavigationBar({super.key, required this.onItemTapped});
+  final ValueChanged<int> onItemTapped;
   @override
   State<CustomBottomNavigationBar> createState() =>
       _CustomBottomNavigationBarState();
@@ -12,13 +13,12 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 375,
       height: 70,
-      decoration: ShapeDecoration(
+      decoration: const ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -46,6 +46,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               onTap: () {
                 setState(() {
                   selectedIndex = index;
+                  widget.onItemTapped(index);
                 });
               },
               child: NaivgationBarItem(

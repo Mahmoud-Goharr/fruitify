@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruitify/core/helper/snak_bar_failuer.dart';
-import 'package:fruitify/core/widgets/custom_progress_hud.dart';
-import 'package:fruitify/features/auth/presentation/cubits/log_in_.dart/log_in_cubit.dart';
-import 'package:fruitify/features/auth/presentation/views/widgets/login_view_body.dart';
-import 'package:fruitify/features/home/presentation/views/main_view.dart';
+import 'package:fruitify/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruitify/features/home/presentation/views/widgets/main_view_body.dart';
 
-class LogInViewBodyConsumer extends StatelessWidget {
-  const LogInViewBodyConsumer({super.key});
+class MainViewBodyBlocConsumer extends StatelessWidget {
+  const MainViewBodyBlocConsumer({super.key, required this.currentViewIndex});
+
+  final int currentViewIndex;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LogInCubit, LogInState>(
+    return BlocListener<CartCubit, CartState>(
       listener: (context, state) {
-        if (state is LogInSuccess) {
-          Navigator.pushNamedAndRemoveUntil(
-            (context),
-            MainView.routeName,
-            (route) => false,
-          );
+        if (state is CartItemAdded) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -29,7 +23,7 @@ class LogInViewBodyConsumer extends StatelessWidget {
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        'تم تسجيل الدخول بنجاح',
+                        'تمت العمليه بنجاح',
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
@@ -49,16 +43,8 @@ class LogInViewBodyConsumer extends StatelessWidget {
               ),
             );
         }
-        if (state is LogInFailure) {
-          snak_bar_failuer(context, state.errorMessage);
-        }
       },
-      builder: (context, state) {
-        return CustomProgressHud(
-          isLoading: state is LogInLoading ? true : false,
-          child: LoginViewBody(),
-        );
-      },
+      child: MainViewBody(currentViewIndex: currentViewIndex),
     );
   }
 }

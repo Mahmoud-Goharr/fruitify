@@ -3,7 +3,7 @@ import 'package:fruitify/core/widgets/notification_widget.dart';
 
 import '../utils/app_text_styles.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar({required String title}) {
   return AppBar(
     actions: const [
       Padding(

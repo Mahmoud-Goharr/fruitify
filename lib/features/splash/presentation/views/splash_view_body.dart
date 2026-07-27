@@ -5,9 +5,10 @@ import 'package:fruitify/core/assets.dart';
 import 'package:fruitify/core/services/shared_preferences_singleton.dart';
 import 'package:fruitify/features/auth/doamin/repos/auth_rebo.dart';
 import 'package:fruitify/features/auth/presentation/views/login_view.dart';
-import 'package:fruitify/features/home/presentation/views/home_view.dart';
+import 'package:fruitify/features/home/presentation/views/main_view.dart';
 import 'package:fruitify/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:get_it/get_it.dart';
+
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
@@ -50,7 +51,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       final authRepo = GetIt.I<AuthRepo>();
 
       if (authRepo.isLoggedIn()) {
-        Navigator.of(context).pushReplacementNamed(HomeView.routeName);
+        Navigator.of(context).pushReplacementNamed(MainView.routeName);
       } else {
         Navigator.of(context).pushReplacementNamed(LoginView.routeName);
       }
