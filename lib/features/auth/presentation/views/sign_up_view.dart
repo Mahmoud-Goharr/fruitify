@@ -17,7 +17,7 @@ class SignUpView extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
-            appBar: CustomAppBar(context, title: 'حساب جديد'),
+            appBar: customAppBar(context, title: 'حساب جديد'),
             body: const SignupViewBodyBlocConsumer(),
           );
         },

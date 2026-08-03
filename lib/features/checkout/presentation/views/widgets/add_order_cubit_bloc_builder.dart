@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruitify/core/helper/snak_bar_failuer.dart';
+import 'package:fruitify/core/helper/snak_bar_sucess.dart';
 import 'package:fruitify/core/widgets/custom_progress_hud.dart';
 import 'package:fruitify/features/checkout/presentation/manger/add_order_cubit/add_order_cubit.dart';
 
@@ -13,7 +14,7 @@ class AddOrderCubitBlocBuilder extends StatelessWidget {
     return BlocConsumer<AddOrderCubit, AddOrderState>(
       listener: (context, state) {
         if (state is AddOrderSuccess) {
-          snakBarFailuer(context, 'تمت العملية بنجاح');
+          snakBarSuccess(context, 'تمت العملية بنجاح');
         }
 
         if (state is AddOrderFailure) {

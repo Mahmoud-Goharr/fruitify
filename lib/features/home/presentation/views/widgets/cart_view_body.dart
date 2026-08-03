@@ -21,7 +21,7 @@ class CartViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: kTopPaddding),
-                  CustomAppBar(
+                  customAppBar(
                     context,
                     title: 'السلة',
                     showNotification: false,

@@ -1,17 +1,17 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-import 'package:fruitify/core/helper/snak_bar_failuer.dart';
-import 'package:fruitify/core/widgets/custom_button.dart';
-import 'package:fruitify/features/checkout/domain/entites/order_entity.dart';
-import 'package:fruitify/features/checkout/domain/entites/paypal_payment_entity/paypal_payment_entity.dart';
-import 'package:fruitify/features/checkout/presentation/manger/add_order_cubit/add_order_cubit.dart';
-import 'package:fruitify/features/checkout/presentation/views/widgets/checkout_steps.dart';
+import 'package:fruitify/core/helper/snak_bar_sucess.dart';
+import 'package:fruitify/core/utils/app_keys.dart';
 import 'checkout_steps_page_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruitify/core/widgets/custom_button.dart';
+import 'package:fruitify/core/helper/snak_bar_failuer.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:fruitify/features/checkout/domain/entites/order_entity.dart';
+import 'package:fruitify/features/checkout/presentation/views/widgets/checkout_steps.dart';
+import 'package:fruitify/features/checkout/presentation/manger/add_order_cubit/add_order_cubit.dart';
+import 'package:fruitify/features/checkout/domain/entites/paypal_payment_entity/paypal_payment_entity.dart';
 
-const String kPaypalClientId = 'REPLACE_WITH_PAYPAL_CLIENT_ID';
-const String kPaypalSecretKey = 'REPLACE_WITH_PAYPAL_SECRET_KEY';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
@@ -83,7 +83,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             pageController: pageController,
             currentPageIndex: currentPageIndex,
           ),
-
           Expanded(
             child: CheckoutStepsPageView(
               valueListenable: valueNotifier,
@@ -104,7 +103,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
 
             text: getNextButtonText(currentPageIndex),
           ),
-
           const SizedBox(height: 32),
         ],
       ),
@@ -160,12 +158,13 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       MaterialPageRoute(
         builder: (BuildContext context) => PaypalCheckoutView(
           sandboxMode: true,
-          clientId: kPaypalClientId,
-          secretKey: kPaypalSecretKey,
+          clientId: KpaypalClientId,
+          secretKey: KpaypalSecretKey,
           transactions: [paypalPaymentEntity.toJson()],
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
             Navigator.pop(context);
+            snakBarSuccess(context, 'تم الدفع بنجاح');
             addOrderCubit.addOrder(order: orderEntity);
           },
           onError: (error) {

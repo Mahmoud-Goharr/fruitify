@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/core/widgets/notification_widget.dart';
 
-AppBar CustomAppBar(
+AppBar customAppBar(
   BuildContext context, {
   required String title,
   bool showBackButton = true,

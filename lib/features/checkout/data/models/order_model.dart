@@ -11,6 +11,8 @@ class OrderModel {
   final List<OrderProductModel> orderProducts;
   final String paymentMethod;
   final String orderId;
+  
+  
   OrderModel({
     required this.totalPrice,
     required this.uId,
@@ -20,6 +22,7 @@ class OrderModel {
     required this.paymentMethod,
   });
 
+
   factory OrderModel.fromEntity(OrderInputEntity orderEntity) {
     return OrderModel(
       orderId: const Uuid().v4(),
@@ -28,6 +31,7 @@ class OrderModel {
       shippingAddressModel: ShippingAddressModel.fromEntity(
         orderEntity.shippingAddressEntity,
       ),
+      
       orderProducts: orderEntity.cartEntity.cartItems
           .map((e) => OrderProductModel.fromEntity(cartItemEntity: e))
           .toList(),

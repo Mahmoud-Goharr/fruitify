@@ -73,3 +73,4 @@ key.properties
 # Firebase
 # =========================
 firebase-debug.log
+lib/core/utils/app_keys.dart
