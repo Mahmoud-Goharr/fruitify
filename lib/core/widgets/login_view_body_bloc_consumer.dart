@@ -50,7 +50,7 @@ class LogInViewBodyConsumer extends StatelessWidget {
             );
         }
         if (state is LogInFailure) {
-          snak_bar_failuer(context, state.errorMessage);
+          snakBarFailuer(context, state.errorMessage);
         }
       },
       builder: (context, state) {

@@ -14,12 +14,10 @@ class SignUpView extends StatelessWidget {
     return BlocProvider(
       create: (context) => SignUpCubit(getIt<AuthRepo>()),
       child: BlocConsumer<SignUpCubit, SignUpState>(
-        listener: (context, state) {
-
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
-            appBar: buildAppbar(context, title: 'حساب جديد'),
+            appBar: CustomAppBar(context, title: 'حساب جديد'),
             body: const SignupViewBodyBlocConsumer(),
           );
         },

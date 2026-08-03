@@ -40,7 +40,6 @@ class AuthRepositoryImpl extends AuthRepo {
       id: authUser.id,
     );
 
-    // The database record is the source of truth for profile fields.
     return userData == null ? authUser : UserModel.fromMap(userData);
   }
 

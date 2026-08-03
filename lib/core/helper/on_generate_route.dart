@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruitify/features/auth/presentation/views/login_view.dart';
 import 'package:fruitify/features/auth/presentation/views/sign_up_view.dart';
 import 'package:fruitify/features/best_selling_fruits/presentation/views/best_selling_view.dart';
+import 'package:fruitify/features/checkout/presentation/views/check_view.dart';
+import 'package:fruitify/features/home/domain/entites/cart_entity.dart';
 import 'package:fruitify/features/home/presentation/views/main_view.dart';
 import 'package:fruitify/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fruitify/features/splash/presentation/views/splash_view.dart';
@@ -10,6 +12,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case 'splash':
       return MaterialPageRoute(builder: (_) => const SplashView());
+    case 'check_view':
+      return MaterialPageRoute(
+        builder: (context) =>
+            CheckoutView(cartEntity: settings.arguments as CartEntity),
+      );
     case 'onBoardingView':
       return MaterialPageRoute(builder: (_) => const OnBoardingView());
     case 'loginView':

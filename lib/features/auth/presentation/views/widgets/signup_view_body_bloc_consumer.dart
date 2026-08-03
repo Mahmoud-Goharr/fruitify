@@ -22,10 +22,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
               SnackBar(
                 content: Row(
                   children: [
-                    const Icon(
-                      Icons.check_circle_outline,
-                      color: Colors.white,
-                    ),
+                    const Icon(Icons.check_circle_outline, color: Colors.white),
                     SizedBox(width: 12.w),
                     Expanded(
                       child: Text(
@@ -43,9 +40,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
                 elevation: 8,
                 margin: EdgeInsets.all(16.r),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(16.r),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(16.r)),
                 ),
                 duration: const Duration(seconds: 2),
               ),
@@ -53,7 +48,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
         }
 
         if (state is SignUpFailure) {
-          snak_bar_failuer(context, state.errorMessage);
+          snakBarFailuer(context, state.errorMessage);
         }
       },
       builder: (context, state) {

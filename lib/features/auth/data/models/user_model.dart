@@ -6,6 +6,7 @@ class UserModel extends UserEntity {
     required super.name,
     required super.email,
     required super.id,
+    required super.uID,
   });
 
   factory UserModel.fromSupabaseUser(User user) {
@@ -13,6 +14,7 @@ class UserModel extends UserEntity {
       id: user.id,
       email: user.email ?? '',
       name: user.userMetadata?['name'] ?? '',
+      uID: '',
     );
   }
 
@@ -21,14 +23,11 @@ class UserModel extends UserEntity {
       id: map['id'] as String,
       name: map['name'] as String? ?? '',
       email: map['email'] as String? ?? '',
+      uID: '',
     );
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-    };
+    return {'id': id, 'name': name, 'email': email};
   }
 }

@@ -19,17 +19,14 @@ class LoginView extends StatelessWidget {
             Navigator.of(context).pushReplacementNamed(LoginView.routeName);
           }
           if (state is LogInFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-              ),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
           }
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: buildAppbar(
-              context, title: 'تسجيل دخول'),
+            appBar: CustomAppBar(context, title: 'تسجيل دخول'),
             body: LogInViewBodyConsumer(),
           );
         },
@@ -37,5 +34,3 @@ class LoginView extends StatelessWidget {
     );
   }
 }
-
-
