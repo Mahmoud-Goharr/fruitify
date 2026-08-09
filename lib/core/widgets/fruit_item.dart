@@ -5,10 +5,14 @@ import 'package:fruitify/core/utils/app_colors.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/core/widgets/custom_network_image.dart';
 import 'package:fruitify/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruitify/features/home/presentation/cubits/favorite/favorite_cubit.dart';
+import 'package:fruitify/features/home/presentation/cubits/favorite/favorite_state.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
+
   final ProductEntity productEntity;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,11 +27,26 @@ class FruitItem extends StatelessWidget {
           Positioned(
             top: 0,
             right: 0,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.favorite_outline),
+            child: BlocBuilder<FavoriteCubit, FavoriteState>(
+              builder: (context, state) {
+                final isFavorite = context.read<FavoriteCubit>().isFavorite(
+                  productEntity,
+                );
+
+                return IconButton(
+                  onPressed: () {
+                    context.read<FavoriteCubit>().toggleFavorite(productEntity);
+                  },
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_outline,
+                    color: isFavorite ? Colors.red : Colors.grey,
+                  ),
+                );
+              },
             ),
           ),
+
+          // Product
           Positioned.fill(
             child: Column(
               children: [
@@ -36,18 +55,21 @@ class FruitItem extends StatelessWidget {
                 Flexible(
                   child: CustomNetworkImage(imageUrl: productEntity.imageUrl),
                 ),
+
                 const SizedBox(height: 24),
+
                 ListTile(
                   title: Text(
                     productEntity.name,
                     textAlign: TextAlign.right,
                     style: TextStyles.semiBold16,
                   ),
+
                   subtitle: Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '${productEntity.price}جنيه ',
+                          text: '${productEntity.price} جنيه ',
                           style: TextStyles.bold13.copyWith(
                             color: AppColors.secondaryColor,
                           ),
@@ -74,6 +96,7 @@ class FruitItem extends StatelessWidget {
                     ),
                     textAlign: TextAlign.right,
                   ),
+
                   trailing: GestureDetector(
                     onTap: () {
                       context.read<CartCubit>().addProduct(productEntity);

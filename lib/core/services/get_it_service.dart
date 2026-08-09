@@ -7,6 +7,8 @@ import 'package:fruitify/core/services/supabase_auth_service.dart';
 import 'package:fruitify/core/services/supabase_database_service.dart';
 import 'package:fruitify/features/auth/data/repos/auth_rebo_impl.dart';
 import 'package:fruitify/features/auth/doamin/repos/auth_rebo.dart';
+import 'package:fruitify/features/profile/data/repos/user_order_repo_impl.dart';
+import 'package:fruitify/features/profile/domain/repos/user_orders_repo.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -33,4 +35,8 @@ void setupGetit() {
   );
 
   getIt.registerSingleton<OrdersRepo>(OrdersRepoImpl(getIt<DatabaseService>()));
+
+  getIt.registerSingleton<UserOrdersRepo>(
+    UserOrdersRepoImpl(getIt<DatabaseService>()),
+  );
 }

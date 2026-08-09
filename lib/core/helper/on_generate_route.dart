@@ -3,15 +3,24 @@ import 'package:fruitify/features/auth/presentation/views/login_view.dart';
 import 'package:fruitify/features/auth/presentation/views/sign_up_view.dart';
 import 'package:fruitify/features/best_selling_fruits/presentation/views/best_selling_view.dart';
 import 'package:fruitify/features/checkout/presentation/views/check_view.dart';
-import 'package:fruitify/features/home/domain/entites/cart_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/cart_entity.dart';
 import 'package:fruitify/features/home/presentation/views/main_view.dart';
 import 'package:fruitify/features/onboarding/presentation/views/on_boarding_view.dart';
+import 'package:fruitify/features/profile/presentation/views/favorite_view.dart';
+import 'package:fruitify/features/profile/presentation/views/orders_view.dart';
+import 'package:fruitify/features/profile/presentation/views/who_are_we_view.dart';
 import 'package:fruitify/features/splash/presentation/views/splash_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case 'splash':
       return MaterialPageRoute(builder: (_) => const SplashView());
+    case WhoAreWeView.routeName:
+      return MaterialPageRoute(builder: (context) => const WhoAreWeView());
+    case OrdersView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrdersView());
+    case FavoriteView.routeName:
+      return MaterialPageRoute(builder: (context) => const FavoriteView());
     case 'check_view':
       return MaterialPageRoute(
         builder: (context) =>

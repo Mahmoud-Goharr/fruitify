@@ -1,4 +1,4 @@
-import 'package:fruitify/features/home/domain/entites/car_item_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/car_item_entity.dart';
 
 import 'item.dart';
 

@@ -1,33 +1,37 @@
-import 'package:fruitify/features/auth/doamin/entities/user_entity.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:fruitify/features/auth/doamin/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
   UserModel({
+    required super.uId,
     required super.name,
     required super.email,
-    required super.id,
-    required super.uID,
+    super.imageUrl,
   });
 
   factory UserModel.fromSupabaseUser(User user) {
     return UserModel(
-      id: user.id,
-      email: user.email ?? '',
+      uId: user.id,
       name: user.userMetadata?['name'] ?? '',
-      uID: '',
+      email: user.email ?? '',
+      imageUrl: null,
     );
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: map['id'] as String,
-      name: map['name'] as String? ?? '',
-      email: map['email'] as String? ?? '',
-      uID: '',
+      uId: json['id'],
+      name: json['name'] ?? '',
+      email: json['email'] ?? '',
+      imageUrl: json['image_url'],
     );
   }
 
   Map<String, dynamic> toMap() {
-    return {'id': id, 'name': name, 'email': email};
+    return {
+      'id': uId,
+      'name': name,
+      'email': email,
+    };
   }
 }

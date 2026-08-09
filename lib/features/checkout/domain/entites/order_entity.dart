@@ -1,5 +1,5 @@
 import 'package:fruitify/features/checkout/domain/entites/shipping_address_entity.dart';
-import 'package:fruitify/features/home/domain/entites/cart_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/cart_entity.dart';
 
 class OrderInputEntity {
   final String uID;

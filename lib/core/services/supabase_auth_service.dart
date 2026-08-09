@@ -156,7 +156,6 @@ class SupabaseAuthService {
         const Duration(minutes: 2),
         onTimeout: () {
           subscription.cancel();
-          
 
           throw const CustomException(
             message: 'انتهت مهلة تسجيل الدخول بواسطة Facebook.',
@@ -169,6 +168,17 @@ class SupabaseAuthService {
       return user;
     } catch (e, s) {
       log('SupabaseAuthService.logInWithFacebook', error: e, stackTrace: s);
+
+      throw SupabaseErrorHandler.handle(e);
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
+      await _googleSignIn.signOut();
+    } catch (e, s) {
+      log('SupabaseAuthService.signOut', error: e, stackTrace: s);
 
       throw SupabaseErrorHandler.handle(e);
     }

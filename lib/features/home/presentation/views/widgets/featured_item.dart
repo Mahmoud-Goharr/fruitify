@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svg;
-import 'package:fruitify/core/assets.dart';
+import 'package:fruitify/core/utils/app_images.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/features/home/presentation/views/widgets/featured_item_button.dart';
 
@@ -26,7 +26,7 @@ class FeaturedItem extends StatelessWidget {
                 bottom: 0,
                 right: itemWidth * .4,
                 child: SvgPicture.asset(
-                  Assets.assetsImagesPageViewItem2Image,
+                  Assets.imagesPageViewItem2Image,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -34,7 +34,7 @@ class FeaturedItem extends StatelessWidget {
                 width: itemWidth * .5,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: svg.Svg(Assets.assetsImagesFeaturedItemBackground),
+                    image: svg.Svg(Assets.imagesFeaturedItemBackground),
                     fit: BoxFit.fill,
                   ),
                 ),

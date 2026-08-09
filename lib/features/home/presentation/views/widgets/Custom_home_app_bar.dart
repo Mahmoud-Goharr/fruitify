@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruitify/core/assets.dart';
 import 'package:fruitify/core/helper/get_user.dart';
+import 'package:fruitify/core/utils/app_images.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
@@ -18,9 +18,9 @@ class CustomHomeAppBar extends StatelessWidget {
           color: Color(0XFFEEF8ED),
           shape: OvalBorder(),
         ),
-        child: SvgPicture.asset(Assets.assetsImagesNotification),
+        child: SvgPicture.asset(Assets.imagesNotification),
       ),
-      leading: Image.asset(Assets.assetsImagesProfileImage),
+      leading: Image.asset(Assets.imagesProfileImage),
       title: Text(
         'صباح الخير !..',
         style: TextStyles.regular16.copyWith(color: const Color(0XFF949D9E)),

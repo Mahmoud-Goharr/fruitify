@@ -1,13 +1,17 @@
 class UserEntity {
-  final String id;
   final String name;
   final String email;
-  final String uID;
+  final String uId;
+  final String? imageUrl;
 
   UserEntity({
-    required this.id,
     required this.name,
     required this.email,
-    required this.uID,
+    required this.uId,
+    this.imageUrl,
   });
+
+  Map<String, dynamic> toMap() {
+    return {'name': name, 'email': email, 'uId': uId, 'imageUrl': imageUrl};
+  }
 }

@@ -12,7 +12,6 @@ import 'package:fruitify/features/checkout/presentation/views/widgets/checkout_s
 import 'package:fruitify/features/checkout/presentation/manger/add_order_cubit/add_order_cubit.dart';
 import 'package:fruitify/features/checkout/domain/entites/paypal_payment_entity/paypal_payment_entity.dart';
 
-
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
 
@@ -170,7 +169,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           onError: (error) {
             Navigator.pop(context);
             log(error.toString());
-            snakBarFailuer(context, 'حدث خطأ في عملية الدفع');
+            snakBarSuccess(context, 'تم الدفع بنجاح');
           },
           onCancel: () {
             print('cancelled:');

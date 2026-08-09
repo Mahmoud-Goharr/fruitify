@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruitify/features/home/presentation/views/widgets/cart_item.dart';
 
-import '../../../domain/entites/car_item_entity.dart';
+import '../../../domain/cart_entity/car_item_entity.dart';
 
 class CarItemsList extends StatelessWidget {
   const CarItemsList({super.key, required this.carItems});

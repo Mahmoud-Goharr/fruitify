@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fruitify/core/assets.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
+import 'package:fruitify/core/utils/app_images.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/features/onboarding/presentation/views/widgets/page_view_item.dart';
 
@@ -38,8 +38,8 @@ class OnboardingPageView extends StatelessWidget {
           description:
               'اكتشف تجربة تسوق فريدة مع Fruitify. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
 
-          image: Assets.assetsImagesPageViewItem1Image,
-          backgroundimg: Assets.assetsImagesPageViewItem1BackgroundImage,
+          image: Assets.imagesPageViewItem1Image,
+          backgroundimg: Assets.imagesPageViewItem1BackgroundImage,
         ),
 
         ///onboarding page view item 2
@@ -48,8 +48,8 @@ class OnboardingPageView extends StatelessWidget {
           title: Text('ابحث وتسوق', style: TextStyles.bold23),
           description:
               'اكتشف تجربة تسوق فريدة مع Fruitify. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
-          image: Assets.assetsImagesPageViewItem2Image,
-          backgroundimg: Assets.assetsImagesPageViewItem2BackgroundImage,
+          image: Assets.imagesPageViewItem2Image,
+          backgroundimg: Assets.imagesPageViewItem2BackgroundImage,
         ),
       ],
     );

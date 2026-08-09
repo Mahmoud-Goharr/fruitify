@@ -8,7 +8,7 @@ import 'package:fruitify/features/checkout/domain/entites/shipping_address_entit
 import 'package:fruitify/features/checkout/presentation/manger/add_order_cubit/add_order_cubit.dart';
 import 'package:fruitify/features/checkout/presentation/views/widgets/add_order_cubit_bloc_builder.dart';
 import 'package:fruitify/features/checkout/presentation/views/widgets/check_view_body.dart';
-import 'package:fruitify/features/home/domain/entites/cart_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/cart_entity.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/repos/orders_repo/orders_repo.dart';
 
@@ -30,7 +30,7 @@ class _CheckoutViewState extends State<CheckoutView> {
     super.initState();
     orderEntity = OrderInputEntity(
       cartEntity: widget.cartEntity,
-      uID: getUser()!.uID,
+      uID: getUser()!.uId,
       shippingAddressEntity: ShippingAddressEntity(),
     );
   }

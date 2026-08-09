@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
-import 'package:fruitify/features/home/domain/entites/car_item_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/car_item_entity.dart';
 import 'package:fruitify/features/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 
 class CartItemActionButtons extends StatelessWidget {

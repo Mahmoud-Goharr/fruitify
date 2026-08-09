@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/features/best_selling_fruits/presentation/views/best_selling_view.dart';
 
-
 class BestSellingHeader extends StatelessWidget {
-  const BestSellingHeader({super.key});
+  const BestSellingHeader({super.key, this.visibleMore = true});
+
+  final bool visibleMore;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class BestSellingHeader extends StatelessWidget {
             style: TextStyles.regular13.copyWith(
               color: const Color(0xFF949D9E),
             ),
-          )
+          ),
         ],
       ),
     );

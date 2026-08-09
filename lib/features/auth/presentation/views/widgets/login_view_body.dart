@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruitify/constants.dart';
-import 'package:fruitify/core/assets.dart';
 import 'package:fruitify/core/helper/extensions.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
+import 'package:fruitify/core/utils/app_images.dart';
 import 'package:fruitify/core/utils/app_text_styles.dart';
 import 'package:fruitify/core/widgets/custom_bottom.dart';
 import 'package:fruitify/core/widgets/custom_text_form_field.dart';
@@ -102,7 +102,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 onPressed: () {
                   context.read<LogInCubit>().logInWithGoogle();
                 },
-                image: Assets.assetsImagesGoogleIcon,
+                image: Assets.imagesGoogleIcon,
                 title: 'تسجيل بواسطة جوجل',
               ),
               SizedBox(height: 16.h),
@@ -110,7 +110,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 onPressed: () {
                   context.read<LogInCubit>().logInWithFacebook();
                 },
-                image: Assets.assetsImagesFacebookIcon,
+                image: Assets.imagesFacebookIcon,
                 title: 'تسجيل بواسطة فيسبوك',
               ),
             ],

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:fruitify/core/entities/product_entity.dart';
-import 'package:fruitify/features/home/domain/entites/car_item_entity.dart';
-import 'package:fruitify/features/home/domain/entites/cart_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/car_item_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/cart_entity.dart';
 import 'package:meta/meta.dart';
 
 part 'cart_state.dart';

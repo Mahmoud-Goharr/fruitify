@@ -22,7 +22,7 @@ class AuthRepositoryImpl extends AuthRepo {
   Future<void> _saveUserIfNotExists(UserModel user) async {
     final isUserExists = await databaseService.checkIfDataExists(
       path: 'users',
-      id: user.id,
+      id: user.uId,
     );
 
     if (!isUserExists) {
@@ -37,10 +37,10 @@ class AuthRepositoryImpl extends AuthRepo {
 
     final userData = await databaseService.getDataById(
       path: 'users',
-      id: authUser.id,
+      id: authUser.uId,
     );
 
-    return userData == null ? authUser : UserModel.fromMap(userData);
+    return userData == null ? authUser : UserModel.fromJson(userData);
   }
 
   Future<UserEntity> _handleOAuthUser(user) async {
@@ -55,64 +55,71 @@ class AuthRepositoryImpl extends AuthRepo {
     return ServerFailure(message);
   }
 
-  @override
-  Future<Either<Failure, UserEntity>> signUpWithEmail({
-    required String email,
-    required String password,
-    required String name,
-  }) async {
-    try {
-      final user = await supabaseAuthService.signUpWithEmail(
-        email: email,
-        password: password,
-        name: name,
-      );
+@override
+Future<Either<Failure, UserEntity>> signUpWithEmail({
+  required String email,
+  required String password,
+  required String name,
+}) async {
+  try {
+    final user = await supabaseAuthService.signUpWithEmail(
+      email: email,
+      password: password,
+      name: name,
+    );
 
-      final userModel = await _getOrCreateUser(user);
-      await saveUserData(userModel);
+    final userModel = await _getOrCreateUser(user);
 
-      return Right(userModel);
-    } on CustomException catch (e) {
-      return Left(ServerFailure(e.message));
-    } catch (e) {
-      return Left(
-        _handleFailure(e, 'تعذر إنشاء الحساب. يرجى المحاولة مرة أخرى.'),
-      );
-    }
+    await saveUserData(userModel);
+
+    return Right(userModel);
+  } on CustomException catch (e) {
+    return Left(ServerFailure(e.message));
+  } catch (e) {
+    return Left(
+      _handleFailure(
+        e,
+        'تعذر إنشاء الحساب. يرجى المحاولة مرة أخرى.',
+      ),
+    );
   }
-
+}
   @override
   bool isLoggedIn() {
     return supabaseAuthService.currentUser != null;
   }
 
-  Future<void> saveUserData(UserModel user) async {
-    await prehs.saveUserData(user);
-  }
+Future<void> saveUserData(UserModel user) async {
+  await prehs.saveUserData(user);
+}
 
   @override
-  Future<Either<Failure, UserEntity>> logInWithEmail({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      final user = await supabaseAuthService.signInWithEmail(
-        email: email,
-        password: password,
-      );
+Future<Either<Failure, UserEntity>> logInWithEmail({
+  required String email,
+  required String password,
+}) async {
+  try {
+    final user = await supabaseAuthService.signInWithEmail(
+      email: email,
+      password: password,
+    );
 
-      final userModel = await _getOrCreateUser(user);
-      await saveUserData(userModel);
+    final userModel = await _getOrCreateUser(user);
 
-      return Right(userModel);
-    } on CustomException catch (e) {
-      return Left(ServerFailure(e.message));
-    } catch (e) {
-      return Left(
-        _handleFailure(e, 'تعذر تسجيل الدخول. يرجى المحاولة مرة أخرى.'),
-      );
-    }
+    await saveUserData(userModel);
+
+    return Right(userModel);
+  } on CustomException catch (e) {
+    return Left(ServerFailure(e.message));
+  } catch (e) {
+    return Left(
+      _handleFailure(
+        e,
+        'تعذر تسجيل الدخول. يرجى المحاولة مرة أخرى.',
+      ),
+    );
   }
+}
 
   @override
   Future<Either<Failure, UserEntity>> logInWithGoogle() async {

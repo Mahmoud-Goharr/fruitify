@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruitify/core/utils/app_colors.dart';
 import 'package:fruitify/core/widgets/custom_network_image.dart';
-import 'package:fruitify/features/home/domain/entites/car_item_entity.dart';
+import 'package:fruitify/features/home/domain/cart_entity/car_item_entity.dart';
 import 'package:fruitify/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruitify/features/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 import 'package:fruitify/features/home/presentation/views/widgets/cart_item_action_buttons.dart';

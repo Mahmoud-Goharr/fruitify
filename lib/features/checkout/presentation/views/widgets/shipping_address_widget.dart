@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruitify/core/assets.dart';
+import 'package:fruitify/core/utils/app_images.dart';
 import 'package:fruitify/features/checkout/domain/entites/order_entity.dart';
 import 'package:fruitify/features/checkout/presentation/views/widgets/payment_item.dart';
 
@@ -20,7 +20,7 @@ class ShippingAddressWidget extends StatelessWidget {
       tile: 'عنوان التوصيل',
       child: Row(
         children: [
-          SvgPicture.asset(Assets.assetsImagesLocation),
+          SvgPicture.asset(Assets.imagesLocation),
           const SizedBox(width: 8),
           Text(
             ' ${context.read<OrderInputEntity>().shippingAddressEntity}',
@@ -41,7 +41,7 @@ class ShippingAddressWidget extends StatelessWidget {
             child: SizedBox(
               child: Row(
                 children: [
-                  SvgPicture.asset(Assets.assetsImagesEdit),
+                  SvgPicture.asset(Assets.imagesEdit),
                   const SizedBox(width: 4),
                   Text(
                     'تعديل',

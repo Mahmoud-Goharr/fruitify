@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for imagesAppIcon
   /// assets/images/app_icon.png
   static const String imagesAppIcon = "assets/images/app_icon.png";
@@ -24,8 +24,7 @@ class Assets {
 
   /// Assets for imagesFeaturedItemBackground
   /// assets/images/featured_item_background.svg
-  static const String imagesFeaturedItemBackground =
-      "assets/images/featured_item_background.svg";
+  static const String imagesFeaturedItemBackground = "assets/images/featured_item_background.svg";
 
   /// Assets for imagesFilter
   /// assets/images/filter.svg
@@ -53,27 +52,59 @@ class Assets {
 
   /// Assets for imagesPageViewItem1BackgroundImage
   /// assets/images/page_view_item1_background_image.svg
-  static const String imagesPageViewItem1BackgroundImage =
-      "assets/images/page_view_item1_background_image.svg";
+  static const String imagesPageViewItem1BackgroundImage = "assets/images/page_view_item1_background_image.svg";
 
   /// Assets for imagesPageViewItem1Image
   /// assets/images/page_view_item1_image.svg
-  static const String imagesPageViewItem1Image =
-      "assets/images/page_view_item1_image.svg";
+  static const String imagesPageViewItem1Image = "assets/images/page_view_item1_image.svg";
 
   /// Assets for imagesPageViewItem2BackgroundImage
   /// assets/images/page_view_item2_background_image.svg
-  static const String imagesPageViewItem2BackgroundImage =
-      "assets/images/page_view_item2_background_image.svg";
+  static const String imagesPageViewItem2BackgroundImage = "assets/images/page_view_item2_background_image.svg";
 
   /// Assets for imagesPageViewItem2Image
   /// assets/images/page_view_item2_image.svg
-  static const String imagesPageViewItem2Image =
-      "assets/images/page_view_item2_image.svg";
+  static const String imagesPageViewItem2Image = "assets/images/page_view_item2_image.svg";
 
   /// Assets for imagesPlant
   /// assets/images/plant.svg
   static const String imagesPlant = "assets/images/plant.svg";
+
+  /// Assets for imagesProfileIconsGlobal
+  /// assets/images/profileIcons/global.svg
+  static const String imagesProfileIconsGlobal = "assets/images/profileIcons/global.svg";
+
+  /// Assets for imagesProfileIconsHeart
+  /// assets/images/profileIcons/heart.svg
+  static const String imagesProfileIconsHeart = "assets/images/profileIcons/heart.svg";
+
+  /// Assets for imagesProfileIconsLogout
+  /// assets/images/profileIcons/logout.svg
+  static const String imagesProfileIconsLogout = "assets/images/profileIcons/logout.svg";
+
+  /// Assets for imagesProfileIconsMagicpen
+  /// assets/images/profileIcons/magicpen.svg
+  static const String imagesProfileIconsMagicpen = "assets/images/profileIcons/magicpen.svg";
+
+  /// Assets for imagesProfileIconsNotification
+  /// assets/images/profileIcons/notification.svg
+  static const String imagesProfileIconsNotification = "assets/images/profileIcons/notification.svg";
+
+  /// Assets for imagesProfileIconsVuesaxOutlineBox
+  /// assets/images/profileIcons/vuesax/outline/box.svg
+  static const String imagesProfileIconsVuesaxOutlineBox = "assets/images/profileIcons/vuesax/outline/box.svg";
+
+  /// Assets for imagesProfileIconsVuesaxOutlineEmptyWallet
+  /// assets/images/profileIcons/vuesax/outline/empty-wallet.svg
+  static const String imagesProfileIconsVuesaxOutlineEmptyWallet = "assets/images/profileIcons/vuesax/outline/empty-wallet.svg";
+
+  /// Assets for imagesProfileIconsVuesaxOutlineInfoCircle
+  /// assets/images/profileIcons/vuesax/outline/info-circle.svg
+  static const String imagesProfileIconsVuesaxOutlineInfoCircle = "assets/images/profileIcons/vuesax/outline/info-circle.svg";
+
+  /// Assets for imagesProfileIconsVuesaxOutlineUser
+  /// assets/images/profileIcons/vuesax/outline/user.svg
+  static const String imagesProfileIconsVuesaxOutlineUser = "assets/images/profileIcons/vuesax/outline/user.svg";
 
   /// Assets for imagesProfileImage
   /// assets/images/profile_image.png
@@ -97,46 +128,38 @@ class Assets {
 
   /// Assets for imagesVuesaxBoldHome
   /// assets/images/vuesax/bold/home.svg
-  static const String imagesVuesaxBoldHome =
-      "assets/images/vuesax/bold/home.svg";
+  static const String imagesVuesaxBoldHome = "assets/images/vuesax/bold/home.svg";
 
   /// Assets for imagesVuesaxBoldProducts
   /// assets/images/vuesax/bold/products.svg
-  static const String imagesVuesaxBoldProducts =
-      "assets/images/vuesax/bold/products.svg";
+  static const String imagesVuesaxBoldProducts = "assets/images/vuesax/bold/products.svg";
 
   /// Assets for imagesVuesaxBoldShoppingCart
   /// assets/images/vuesax/bold/shopping-cart.svg
-  static const String imagesVuesaxBoldShoppingCart =
-      "assets/images/vuesax/bold/shopping-cart.svg";
+  static const String imagesVuesaxBoldShoppingCart = "assets/images/vuesax/bold/shopping-cart.svg";
 
   /// Assets for imagesVuesaxBoldUser
   /// assets/images/vuesax/bold/user.svg
-  static const String imagesVuesaxBoldUser =
-      "assets/images/vuesax/bold/user.svg";
+  static const String imagesVuesaxBoldUser = "assets/images/vuesax/bold/user.svg";
 
   /// Assets for imagesVuesaxOutlineHome
   /// assets/images/vuesax/outline/home.svg
-  static const String imagesVuesaxOutlineHome =
-      "assets/images/vuesax/outline/home.svg";
+  static const String imagesVuesaxOutlineHome = "assets/images/vuesax/outline/home.svg";
 
   /// Assets for imagesVuesaxOutlineProducts
   /// assets/images/vuesax/outline/products.svg
-  static const String imagesVuesaxOutlineProducts =
-      "assets/images/vuesax/outline/products.svg";
+  static const String imagesVuesaxOutlineProducts = "assets/images/vuesax/outline/products.svg";
 
   /// Assets for imagesVuesaxOutlineShoppingCart
   /// assets/images/vuesax/outline/shopping-cart.svg
-  static const String imagesVuesaxOutlineShoppingCart =
-      "assets/images/vuesax/outline/shopping-cart.svg";
+  static const String imagesVuesaxOutlineShoppingCart = "assets/images/vuesax/outline/shopping-cart.svg";
 
   /// Assets for imagesVuesaxOutlineUser
   /// assets/images/vuesax/outline/user.svg
-  static const String imagesVuesaxOutlineUser =
-      "assets/images/vuesax/outline/user.svg";
+  static const String imagesVuesaxOutlineUser = "assets/images/vuesax/outline/user.svg";
 
   /// Assets for imagesWatermelonTest
   /// assets/images/watermelon_test.png
-  static const String imagesWatermelonTest =
-      "assets/images/watermelon_test.png";
+  static const String imagesWatermelonTest = "assets/images/watermelon_test.png";
 }
+
