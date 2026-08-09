@@ -1,17 +1,97 @@
-# fruitify
+# 🍎 Fruitify
 
-A new Flutter project.
+A modern fruit e-commerce mobile application built with **Flutter** and **Supabase**, designed to provide a smooth and simple shopping experience.
 
-## Getting Started
+## 📱 About The Project
 
-This project is a starting point for a Flutter application.
+**Fruitify** is a Flutter-based e-commerce application for browsing and purchasing fresh fruits.
 
-A few resources to get you started if this is your first Flutter project:
+The project focuses on applying **Clean Architecture**, **BLoC/Cubit state management**, **Repository Pattern**, and **Dependency Injection** while integrating Supabase as the backend.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ✨ Features
+
+- 🔐 **Authentication**
+  - Sign Up with Email & Password
+  - Login with Email & Password
+  - Supabase Authentication
+
+- 🍎 **Products**
+  - Browse available products
+  - View product information
+  - Display product prices
+  - Product filtering
+
+- 🛒 **Shopping Cart**
+  - Add products to cart
+  - Increase product quantity
+  - Remove products from cart
+
+- ❤️ **Favorites**
+  - Add products to favorites
+  - Remove products from favorites
+  - Dedicated Favorites screen
+
+- 📦 **Orders**
+  - Create orders
+  - View user orders
+  - Display order details
+  - Track order status
+
+- 👤 **Profile**
+  - Display user information
+  - Profile settings
+  - About Us page
+  - Logout
+
+- 🌍 **Localization**
+  - Arabic language support
+  - RTL layout
+
+- 🎨 **UI / UX**
+  - Modern and clean interface
+  - Light & Dark Mode support
+  - Responsive UI
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Usage |
+|---|---|
+| Flutter | Mobile Application Development |
+| Dart | Programming Language |
+| Supabase | Authentication & Backend |
+| BLoC / Cubit | State Management |
+| SharedPreferences | Local Storage |
+| Flutter SVG | SVG Asset Rendering |
+| ScreenUtil | Responsive UI |
+
+---
+
+## 🏗️ Architecture
+
+The project follows **Clean Architecture** principles and separates the application into three main layers:
+
+```text
+lib/
+│
+├── core/
+│   ├── assets/
+│   ├── cubits/
+│   ├── entities/
+│   ├── errors/
+│   ├── helper/
+│   ├── repos/
+│   ├── services/
+│   ├── utils/
+│   └── widgets/
+│
+└── features/
+    │
+    ├── auth/
+    ├── home/
+    ├── checkout/
+    ├── profile/
+    └── splash/
